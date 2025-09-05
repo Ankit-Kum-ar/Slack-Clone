@@ -33,7 +33,7 @@ const deleteUser = inngest.createFunction(
     async ({ event }) => {
         await connectDB(); // Ensure DB is connected
         const { id } = event.data; // Destructure user ID from the event
-        await User.findOneAndDelete({ clerkId: id }); // Delete user from the database
+        await User.deleteOne({ clerkId: id }); // Delete user from the database
         console.log("Deleted user with Clerk ID:", id);
     }
 )
