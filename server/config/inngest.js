@@ -1,6 +1,7 @@
 const { Inngest } = require("inngest");
 const connectDB = require("./db");
 const User = require("../models/user.model");
+const { upsertStreamUser, deleteStreamUser } = require("./stream");
 
 // Create a client to send and receive events
 const inngest = new Inngest({ id: "Slack Clone" });
@@ -22,6 +23,12 @@ const syncUser = inngest.createFunction(
         } // Prepare user data
 
         await User.create(newUser); // Create user in the database
+        await upsertStreamUser({
+            id: newUser.clerkId.toString(),
+            name: newUser.name,
+            image: newUser.image,
+            email: newUser.email
+        }); // Create user in Stream
         console.log("Syncing user:", newUser);
     }
 )
@@ -34,6 +41,7 @@ const deleteUser = inngest.createFunction(
         await connectDB(); // Ensure DB is connected
         const { id } = event.data; // Destructure user ID from the event
         await User.deleteOne({ clerkId: id }); // Delete user from the database
+        await deleteStreamUser(id.toString()); // Delete user from Stream
         console.log("Deleted user with Clerk ID:", id);
     }
 )
