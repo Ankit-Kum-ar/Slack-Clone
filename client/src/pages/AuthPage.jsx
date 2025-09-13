@@ -25,7 +25,12 @@ const AuthPage = () => {
                     </div>
 
                     <div className='feature-item'>
-                        <span className='feature-icon'>📸</span>
+                        <span className='feature-icon'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-file-earmark-text" viewBox="0 0 16 16">
+                                <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3-1A1.5 1.5 0 0 1 9.5 2V.5L11 .5zM4 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5H9.5A1.5 1.5 0 0 1 8 3V1H4z"/>
+                            </svg>
+                        </span>
                         <span className='feature-text'>Video calls & meetings</span>
                     </div>
 
